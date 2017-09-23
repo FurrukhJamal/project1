@@ -1,3 +1,4 @@
+<?php require("logic.php"); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,7 +12,10 @@
         <div class="main">
             <h1>password generator</h1>
             <div class="password">
-                <h2>some text</h2>
+                <!-- display this h2 tag when password is set -->
+                <?php if($passwordflag): ?>
+                <h2><?= $password ?></h2>
+                <?php endif; ?>
             </div>
             <form action="index.php" method="GET">
                 <fieldset>
@@ -33,9 +37,17 @@
                         <input type="checkbox" name="symbol" >
 
                     </div>
-                    <div>
-                        <input type="submit" value="Generate password!">
+                    <div id = "button">
+                        <input type="submit" value="Generate password!" >
+
                     </div>
+                    <!--display this div only when there is an error in form input -->
+                    <?php if($errorflag): ?>
+                    <div class="error">
+                        <p>*<?= $errormsg ?></p>
+
+                    </div>
+                    <?php endif;?>
 
                 </fieldset>
 
